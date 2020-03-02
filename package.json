@@ -1,0 +1,15 @@
+{
+  "name": "wordspt",
+  "version": "1.0.0",
+  "description": "The list of all the words in Portuguese, including all possible combinations and variations (masculine, feminine, plural, singular, verbal conjugations, etc.)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "words",
+    "Portuguese"
+  ],
+  "author": "João Pimentel Ferreira",
+  "license": "GPL-3.0"
+}
