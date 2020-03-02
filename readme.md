@@ -41,4 +41,4 @@ wordsPt.init({ removeNames: true } /* removes names such as 'Lisboa' */, functio
 
 ## just the file
 
-If you simply want for the plain file, wherein the words are separated by newlines, check the present file [wordsList.zip](wordsList.zip?raw=true). The corresponding unzipped file is encoded in `iso-8859-1`.
+If you simply want for the plain file, wherein the words are separated by newlines `\n`, check the present file [wordsList.zip](wordsList.zip?raw=true). The corresponding unzipped file is encoded in `iso-8859-1`.
