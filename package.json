@@ -11,6 +11,10 @@
     "words",
     "Portuguese"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jfoclpf/words-pt.git"
+  },
   "author": "João Pimentel Ferreira",
   "license": "GPL-3.0",
   "dependencies": {
