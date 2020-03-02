@@ -15,7 +15,7 @@
 
 The list of all the words in Portuguese, including all possible combinations and variations (masculine, feminine, plural, singular, verbal conjugations, etc.). This is based on the great work from the professors of the University of Minho, and the all the files can be accessed [here](https://natura.di.uminho.pt/download/sources/Dictionaries/wordlists/).
 
-# how to use
+## how to use
 Install it
 
 `npm i words-pt`
@@ -38,3 +38,7 @@ wordsPt.init({ removeNames: true } /* removes names such as 'Lisboa' */, functio
   }
 })
 ```
+
+## just the file
+
+If you simply want for the plain file, wherein the words are separated by newlines, check the present file [wordsList.zip](wordsList.zip?raw=true). This unzipped file is encoded in `iso-8859-1`.
