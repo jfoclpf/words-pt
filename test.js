@@ -48,7 +48,7 @@ async.series([
                  wordsPt.isWord('estarei')
 
       if (!bool) {
-        callback(Error('some words are not be here, and they should'))
+        callback(Error('some words are not there, but they should'))
       }
 
       if (wordsPt2.isWord('hello')) {
