@@ -5,7 +5,7 @@ const extractZip = require('extract-zip')
 
 var wordsArray
 
-// file which is zip compressed on the repo
+// file which is zip compressed on the repo, and the corresponding unzipped file
 var wordsListZipFile = path.join(__dirname, 'wordsList.zip')
 var wordsListFile = path.join(__dirname, 'wordsList')
 
@@ -20,7 +20,7 @@ module.exports = {
       options = arguments[0]
       mainCallback = arguments[1]
     } else {
-      throw Error('bad parameters')
+      throw Error(`method init has ${arguments.length} arguments, which is invalid`)
     }
 
     async.series([
@@ -41,29 +41,29 @@ module.exports = {
         fs.readFile(wordsListFile, 'latin1', function (err, data) {
           if (err) {
             callback(Error('Error reading file ' + wordsListFile + '. ' + err.message))
-            return
-          }
+          } else {
+            wordsArray = data.split('\n')
+            // cleans array from empty or falsy entries
+            wordsArray = wordsArray.filter(word => word)
 
-          wordsArray = data.split('\n')
-          // cleans array from empty or falsy entries
-          wordsArray = wordsArray.filter(word => word)
-
-          if (options.removeNames) {
-            wordsArray = wordsArray.filter(word => {
-              return word[0] !== word[0].toUpperCase()
-            })
+            if (options.removeNames) {
+              wordsArray = wordsArray.filter(word => {
+                return word[0] !== word[0].toUpperCase()
+              })
+            }
+            callback()
           }
-          callback()
         })
       },
       // remove unziped file
       function (callback) {
-        removeZipFile()
+        removeUnzippedFile()
         callback()
       }
     ],
     function (err) {
       if (err) {
+        removeUnzippedFile()
         mainCallback(Error(err))
       } else {
         mainCallback()
@@ -80,22 +80,8 @@ module.exports = {
   }
 }
 
-function removeZipFile () {
+function removeUnzippedFile () {
   if (fs.existsSync(wordsListFile)) {
     fs.unlinkSync(wordsListFile)
   }
 }
-
-// catches CTRL-C
-process.on('SIGINT', function () {
-  console.log('Deleting zip file and exiting')
-  removeZipFile()
-  process.exit(1)
-})
-
-// handles excetions
-process.on('uncaughtException', function (err) {
-  // handle the error safely
-  console.log(err)
-  removeZipFile()
-})

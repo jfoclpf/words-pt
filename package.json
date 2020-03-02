@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "standard && node test.js",
-    "coverage": "nyc npm run test"
+    "coverage": "nyc npm run test",
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "keywords": [
     "words",
@@ -22,6 +23,7 @@
     "extract-zip": "1.6.7"
   },
   "devDependencies": {
+    "coveralls": "3.0.9",
     "nyc": "15.0.0",
     "standard": "14.3.1"
   }
