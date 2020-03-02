@@ -41,7 +41,8 @@ async.series([
         callback()
       }
     })
-  }],
+  }
+],
 function (err) {
   if (err) {
     console.error('Test failed')

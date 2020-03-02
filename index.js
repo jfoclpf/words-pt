@@ -90,7 +90,7 @@ function removeZipFile () {
 process.on('SIGINT', function () {
   console.log('Deleting zip file and exiting')
   removeZipFile()
-  process.exit()
+  process.exit(1)
 })
 
 // handles excetions
