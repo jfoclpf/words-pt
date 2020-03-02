@@ -1,5 +1,9 @@
+[![Build Status][travis_img]][travis_url]
 [![Known Vulnerabilities](https://snyk.io/test/github/jfoclpf/words-pt/badge.svg?targetFile=package.json)](https://snyk.io/test/github/jfoclpf/words-pt?targetFile=package.json)
 [![Dependency Status][dependency status_img]][dependency status_url]
+
+[travis_img]: https://travis-ci.org/jfoclpf/words-pt.svg?branch=master
+[travis_url]: https://travis-ci.org/jfoclpf/words-pt
 
 [dependency status_img]: https://david-dm.org/jfoclpf/words-pt.svg
 [dependency status_url]: https://david-dm.org/jfoclpf/words-pt
