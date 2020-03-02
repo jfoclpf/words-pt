@@ -10,12 +10,16 @@ and then use the API
 ```js
 const wordsPt = require('words-pt')
 
-wordsPt.init( { removeNames: true } /* removes names such as 'Lisboa' */, function (err) {
+wordsPt.init({ removeNames: true } /* removes names such as 'Lisboa' */, function (err) {
   if (err) {
     console.error(err)
   } else {
+    wordsPt.isWord('ser') // true
+    wordsPt.isWord('serei') // true
+    wordsPt.isWord('abafar-nos-ão') // true
+    wordsPt.isWord('hello') // false
     let words = wordsPt.getArray() // array of words
-    // do something
+    // do something more
   }
 })
 ```

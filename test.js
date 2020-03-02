@@ -10,6 +10,11 @@ async.series([
         process.exit(1)
       }
       console.log(wordsPt.getArray())
+
+      if (wordsPt2.isWord('hello')) {
+        callback(Error('word "hello" should not be here'))
+      }
+
       if (!wordsPt.isWord('Lisboa')) {
         callback(Error('Lisboa is a name and should be here'))
       } else {
@@ -25,6 +30,11 @@ async.series([
       }
       console.log('Names removed from Array')
       console.log(wordsPt2.getArray())
+
+      if (wordsPt2.isWord('hello')) {
+        callback(Error('word "hello" should not be here'))
+      }
+
       if (wordsPt2.isWord('Lisboa')) {
         callback(Error('Lisboa is a name and should not be here'))
       } else {
