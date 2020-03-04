@@ -25,7 +25,7 @@ and then use the API
 ```js
 const wordsPt = require('words-pt')
 
-wordsPt.init({ removeNames: true } /* removes names such as 'Lisboa' */, function (err) {
+wordsPt.init({ removeNames: true } /* removes names such as 'Lisboa' */, err => {
   if (err) {
     // handle the error
     return
@@ -34,6 +34,13 @@ wordsPt.init({ removeNames: true } /* removes names such as 'Lisboa' */, functio
   wordsPt.isWord('serei') // true
   wordsPt.isWord('abafar-nos-ão') // true
   wordsPt.isWord('hello') // false
+
+  words.Pt.randomWord() // grafonolas
+  words.Pt.randomWord('a') // amealhará
+  words.Pt.randomWord('abc') // abcissa
+
+  words.Pt.biggestWord() // constitucionalizar-lhes-íamos
+
   let words = wordsPt.getArray() // array of words
   // do something more
 })

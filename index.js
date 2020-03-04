@@ -30,7 +30,7 @@ module.exports = {
           if (errOnUnzip) {
             callback(Error('Error unziping file ' + wordsListZipFile + '. ' + errOnUnzip.message))
           } else {
-            console.log('List unzipped successfully')
+            console.log('List of words unzipped successfully')
             callback()
           }
         })
@@ -72,11 +72,44 @@ module.exports = {
   },
 
   getArray: function () {
+    checkIfWordsArrayIsDefined()
     return wordsArray
   },
 
-  isWord (word) {
+  isWord: function (word) {
+    checkIfWordsArrayIsDefined()
     return wordsArray.includes(word)
+  },
+
+  randomWord: function (startString) {
+    checkIfWordsArrayIsDefined()
+
+    var tempArray = startString
+      ? wordsArray.filter(word => word.startsWith(startString))
+      : wordsArray
+
+    // random item from tempArray
+    return tempArray[Math.floor(Math.random() * tempArray.length)]
+  },
+
+  biggestWord: function () {
+    checkIfWordsArrayIsDefined()
+
+    var biggestWord = wordsArray[0]
+    var numberOfWords = wordsArray.length
+    for (let i = 0; i < numberOfWords; i++) {
+      if (wordsArray[i].length > biggestWord.length) {
+        biggestWord = wordsArray[i]
+      }
+    }
+
+    return biggestWord
+  }
+}
+
+function checkIfWordsArrayIsDefined () {
+  if (!wordsArray) {
+    throw Error('Please run first method "init" with a callback. See readme.md')
   }
 }
 
