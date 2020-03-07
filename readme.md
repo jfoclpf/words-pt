@@ -25,7 +25,8 @@ and then use the API
 ```js
 const wordsPt = require('words-pt')
 
-wordsPt.init({ removeNames: true } /* removes names such as 'Lisboa' */, err => {
+// { removeNames: true } removes names such as 'Lisboa' or 'António'
+wordsPt.init({ removeNames: true }, err => {
   if (err) {
     // handle the error
     return
@@ -35,13 +36,28 @@ wordsPt.init({ removeNames: true } /* removes names such as 'Lisboa' */, err => 
   wordsPt.isWord('abafar-nos-ão') // true
   wordsPt.isWord('hello') // false
 
-  words.Pt.randomWord() // grafonolas
-  words.Pt.randomWord('a') // amealhará
-  words.Pt.randomWord('abc') // abcissa
+  words.Pt.randomWord() // grafonolas (any random word)
+  words.Pt.randomWord('a') // amealhará (starting with 'a')
+  words.Pt.randomWord('abc') // abcissa (starting with 'abc')
+  // words.Pt.randomWord('abc') is equivalent to words.Pt.randomWord('abc', '*', '*')  
+
+  // words.Pt.randomWord(beginningPart, middlePart, endPart)
+  words.Pt.randomWord('ab', '*', '*') // 'abcesso'
+  words.Pt.randomWord('a', 'e', '*') // 'abcesso' but not 'abade'
+  words.Pt.randomWord('*', 's', '*') // 'espesso' but not 'sapato' nor 'mamas'
+  words.Pt.randomWord('*', '*', 's') // 'mamas'
+  words.Pt.randomWord('t', '*', 's') // 'tetas'
+  words.Pt.randomWord('t', 'et', 'as') // 'tetanizarias'
+  words.Pt.randomWord('se', 'o', 's') // 'seios'
+  words.Pt.randomWord('sa', 'a', 'to') // 'salteamento'
+
+  // exactly the same as randomWord, but gets all the words
+  wordsPt.getArray() // array with all the words
+  wordsPt.getArray('abc') // ['abcesso', 'abcessos', 'abcissa', 'abcissas']
+  wordsPt.getArray('t', 'et', 'as') // ['tabuletas', 'tchetchenas', 'telefotometrias', 'telemetrias', ... ]
+  wordsPt.getArray('tet', 'a', 's') // ['tetanizadas', 'tetanizados', 'tetanizais' , 'tetanizamos', ... ]
 
   words.Pt.biggestWord() // constitucionalizar-lhes-íamos
-
-  let words = wordsPt.getArray() // array of words
   // do something more
 })
 ```

@@ -71,23 +71,34 @@ module.exports = {
     })
   },
 
-  getArray: function () {
-    checkIfWordsArrayIsDefined()
-    return wordsArray
-  },
-
   isWord: function (word) {
     checkIfWordsArrayIsDefined()
     return wordsArray.includes(word)
   },
 
-  randomWord: function (startString) {
+  getArray: function () {
     checkIfWordsArrayIsDefined()
 
-    var tempArray = startString
-      ? wordsArray.filter(word => word.startsWith(startString))
-      : wordsArray
+    var tempArray
+    if (arguments.length === 0) {
+      tempArray = wordsArray
+    } else if (arguments.length === 1) {
+      tempArray = getFilteredArray(arguments[0], '*', '*')
+    } else if (arguments.length === 2) {
+      tempArray = getFilteredArray(arguments[0], arguments[1], '*')
+    } else if (arguments.length === 3) {
+      tempArray = getFilteredArray(arguments[0], arguments[1], arguments[2])
+    } else {
+      throw Error(`Bad number of arguments: ${arguments.length}. This function takes at maximum 3 arguments`)
+    }
 
+    return tempArray
+  },
+
+  randomWord: function () {
+    checkIfWordsArrayIsDefined()
+    // transfer all the function arguments from randomWord to getArray
+    var tempArray = this.getArray.apply(null, arguments)
     // random item from tempArray
     return tempArray[Math.floor(Math.random() * tempArray.length)]
   },
@@ -105,6 +116,40 @@ module.exports = {
 
     return biggestWord
   }
+}
+
+// examples for this function
+// ('ab', '*', '*') => 'abcesso'
+// ('a', 'e', '*') => 'abcesso' but not 'abade'
+// ('*', 's', '*') => 'espesso' but not 'sapato' nor 'mamas'
+// ('*', '*', 's') => 'mamas'
+// ('t', '*', 's') => 'tetas'
+// ('se', 'o', 's') => 'seios'
+function getFilteredArray () {
+  for (let i = 0; i < 3; i++) {
+    if (typeof arguments[i] !== 'string') {
+      throw Error(`argument ${arguments[i]} must be a string`)
+    }
+  }
+
+  var tempArray = wordsArray.filter((word) => {
+    var output = true
+    if (arguments[0] !== '*') {
+      output = output && word.startsWith(arguments[0])
+    }
+    if (arguments[1] !== '*') {
+      // strip beginning word and end of word
+      const innerWord = word.slice(arguments[0].length, -1 * arguments[2].length)
+      output = output && innerWord.includes(arguments[1])
+    }
+    if (arguments[2] !== '*') {
+      output = output && word.endsWith(arguments[2])
+    }
+
+    return output
+  })
+
+  return tempArray
 }
 
 function checkIfWordsArrayIsDefined () {

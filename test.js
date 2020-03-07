@@ -44,7 +44,33 @@ async.series([
         return
       }
 
-      console.log(`The biggest word is "${wordsPt.biggestWord()}"`)
+      console.log(`\nAll the words started with 'abc': ${wordsPt.getArray('abc')}\n`)
+
+      var testArguments = [
+        'ab, *, *', // => 'abcesso'
+        'a , e, *', // 'abcesso' but not 'abade'
+        '* , s, *', // 'espesso' but not 'sapato' nor 'mamas'
+        '* , *, s', // 'mamas'
+        't , *, s', // 'tetas'
+        'se, o, s', // 'seios'
+        'sa, a, to',
+        'co, p, o',
+        '*,  *, ão',
+        '*,  *, iam',
+        '*,  s, ta',
+        't,  et, as'
+      ]
+
+      for (let i = 0; i < testArguments.length; i++) {
+        let args = testArguments[i].split(',')
+        args = args.map(arg => arg.trim())
+        console.log(`The argumets (${args}) may result in '${wordsPt.randomWord.apply(wordsPt, args)}'`)
+      }
+
+      console.log(`\nOutput for wordsPt.getArray('t', 'et', 'as') is ${wordsPt.getArray('t', 'et', 'as')}\n`)
+      console.log(`\nOutput for wordsPt.getArray('tetas', '*') is ${wordsPt.getArray('tetas', '*')}\n`)
+
+      console.log(`\nThe biggest word is "${wordsPt.biggestWord()}"\n`)
 
       if (!wordsPt.isWord('Lisboa')) {
         callback(Error('Lisboa is a name and should be here'))
@@ -96,6 +122,28 @@ async.series([
       console.log('catching error on purpose:', e.message)
       callback()
     }
+  },
+  // calls init with 3 arguments to trigger expected error
+  function (callback) {
+    wordsPt2.init(() => {
+      try {
+        wordsPt2.getArray('a', 'b', 'c', 'd')
+      } catch (e) {
+        console.log('catching error on purpose:', e.message)
+        callback()
+      }
+    })
+  },
+  // calls init with 3 arguments to trigger expected error
+  function (callback) {
+    wordsPt2.init(() => {
+      try {
+        wordsPt2.getArray(1, 2, 3)
+      } catch (e) {
+        console.log('catching error on purpose:', e.message)
+        callback()
+      }
+    })
   },
   // renames words list zip file to trigger expected error
   function (callback) {
