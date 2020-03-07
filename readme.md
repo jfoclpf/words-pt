@@ -36,20 +36,20 @@ wordsPt.init({ removeNames: true }, err => {
   wordsPt.isWord('abafar-nos-ão') // true
   wordsPt.isWord('hello') // false
 
-  words.Pt.randomWord() // grafonolas (any random word)
-  words.Pt.randomWord('a') // amealhará (starting with 'a')
-  words.Pt.randomWord('abc') // abcissa (starting with 'abc')
+  wordsPt.randomWord() // grafonolas (any random word)
+  wordsPt.randomWord('a') // amealhará (starting with 'a')
+  wordsPt.randomWord('abc') // abcissa (starting with 'abc')
   // words.Pt.randomWord('abc') is equivalent to words.Pt.randomWord('abc', '*', '*')  
 
   // words.Pt.randomWord(beginningPart, middlePart, endPart)
-  words.Pt.randomWord('ab', '*', '*') // 'abcesso'
-  words.Pt.randomWord('a', 'e', '*') // 'abcesso' but not 'abade'
-  words.Pt.randomWord('*', 's', '*') // 'espesso' but not 'sapato' nor 'mamas'
-  words.Pt.randomWord('*', '*', 's') // 'mamas'
-  words.Pt.randomWord('t', '*', 's') // 'tetas'
-  words.Pt.randomWord('t', 'et', 'as') // 'tetanizarias'
-  words.Pt.randomWord('se', 'o', 's') // 'seios'
-  words.Pt.randomWord('sa', 'a', 'to') // 'salteamento'
+  wordsPt.randomWord('ab', '*', '*') // 'abcesso'
+  wordsPt.randomWord('a', 'e', '*') // 'abcesso' but not 'abade'
+  wordsPt.randomWord('*', 's', '*') // 'espesso' but not 'sapato' nor 'mamas'
+  wordsPt.randomWord('*', '*', 's') // 'mamas'
+  wordsPt.randomWord('t', '*', 's') // 'tetas'
+  wordsPt.randomWord('t', 'et', 'as') // 'tetanizarias'
+  wordsPt.randomWord('se', 'o', 's') // 'seios'
+  wordsPt.randomWord('sa', 'a', 'to') // 'salteamento'
 
   // exactly the same as randomWord, but gets all the words
   wordsPt.getArray() // array with all the words
