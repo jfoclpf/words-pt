@@ -1,6 +1,6 @@
 {
   "name": "words-pt",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "The list of all the words in Portuguese, including all possible combinations and variations (masculine, feminine, plural, singular, verbal conjugations, etc.)",
   "main": "index.js",
   "scripts": {
