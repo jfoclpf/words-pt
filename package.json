@@ -20,7 +20,7 @@
   "license": "GPL-3.0",
   "dependencies": {
     "async": "3.2.0",
-    "extract-zip": "1.6.7"
+    "extract-zip": "1.6.8"
   },
   "devDependencies": {
     "coveralls": "3.0.11",
