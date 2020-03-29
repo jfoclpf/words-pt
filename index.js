@@ -26,14 +26,16 @@ module.exports = {
     async.series([
       // unzip JSON file with user insertions
       function (callback) {
-        extractZip(wordsListZipFile, { dir: __dirname }, function (errOnUnzip) {
-          if (errOnUnzip) {
-            callback(Error('Error unziping file ' + wordsListZipFile + '. ' + errOnUnzip.message))
-          } else {
-            console.log('List of words unzipped successfully')
-            callback()
-          }
-        })
+        try {
+          extractZip(wordsListZipFile, { dir: __dirname })
+            .then(() => {
+              console.log('List of words unzipped successfully')
+              callback()
+            })
+            .catch((errOnUnzip) => { callback(Error('Error unziping file ' + wordsListZipFile + '. ' + errOnUnzip.message)) })
+        } catch (errOnUnzip) {
+          callback(Error('Error unziping file ' + wordsListZipFile + '. ' + errOnUnzip.message))
+        }
       },
       // test main calculator function
       function (callback) {
