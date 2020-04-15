@@ -6,7 +6,8 @@
   "scripts": {
     "test": "standard && node test.js",
     "coverage": "nyc npm run test",
-    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "updatePackages": "ncu -e 2 || (ncu -u && npm i --ignore-scripts && npm test && git commit -a -m "update packages" && npm version patch && npm publish && git push)"
   },
   "keywords": [
     "words",
