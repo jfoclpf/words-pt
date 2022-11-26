@@ -1,14 +1,10 @@
 [![Build Status][travis_img]][travis_url]
 [![Coverage Status](https://coveralls.io/repos/github/jfoclpf/words-pt/badge.svg?branch=master)](https://coveralls.io/github/jfoclpf/words-pt?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/jfoclpf/words-pt/badge.svg?targetFile=package.json)](https://snyk.io/test/github/jfoclpf/words-pt?targetFile=package.json)
-[![Dependency Status][dependency status_img]][dependency status_url]
 [![js-standard-style][js-standard-style_img]][js-standard-style_url]
 
 [travis_img]: https://travis-ci.org/jfoclpf/words-pt.svg?branch=master
 [travis_url]: https://travis-ci.org/jfoclpf/words-pt
-
-[dependency status_img]: https://david-dm.org/jfoclpf/words-pt.svg
-[dependency status_url]: https://david-dm.org/jfoclpf/words-pt
 
 [js-standard-style_img]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
 [js-standard-style_url]: https://standardjs.com/
