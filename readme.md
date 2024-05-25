@@ -1,5 +1,3 @@
-[![Node.js CI](https://github.com/jfoclpf/words-pt/actions/workflows/node.js.yml/badge.svg)](https://github.com/jfoclpf/words-pt/actions/workflows/node.js.yml)
-[![CodeQL Security Check](https://github.com/jfoclpf/words-pt/actions/workflows/codeql.yml/badge.svg)](https://github.com/jfoclpf/words-pt/actions/workflows/codeql.yml)
 [![Coverage Status](https://coveralls.io/repos/github/jfoclpf/words-pt/badge.svg?branch=master)](https://coveralls.io/github/jfoclpf/words-pt?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/jfoclpf/words-pt/badge.svg?targetFile=package.json)](https://snyk.io/test/github/jfoclpf/words-pt?targetFile=package.json)
 [![js-standard-style][js-standard-style_img]][js-standard-style_url]
