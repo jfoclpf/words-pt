@@ -1,3 +1,4 @@
+[![Node.js CI](https://github.com/jfoclpf/words-pt/actions/workflows/node.js.yml/badge.svg)](https://github.com/jfoclpf/words-pt/actions/workflows/node.js.yml)
 [![Coverage Status](https://coveralls.io/repos/github/jfoclpf/words-pt/badge.svg?branch=master)](https://coveralls.io/github/jfoclpf/words-pt?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/jfoclpf/words-pt/badge.svg?targetFile=package.json)](https://snyk.io/test/github/jfoclpf/words-pt?targetFile=package.json)
 [![js-standard-style][js-standard-style_img]][js-standard-style_url]
@@ -10,12 +11,13 @@
 
 The list of all the words in Portuguese, including all possible combinations and variations (masculine, feminine, plural, singular, verbal conjugations, etc.). This is based on the great work from the professors of the University of Minho, and the all the files can be accessed [here](https://natura.di.uminho.pt/download/sources/Dictionaries/wordlists/).
 
-## how to use
-Install it
+## Install
 
-`npm i words-pt`
+```sh
+npm i words-pt
+```
 
-and then use the API
+## How to use
 
 ```js
 const wordsPt = require('words-pt')
@@ -57,6 +59,6 @@ wordsPt.init({ removeNames: true }, err => {
 })
 ```
 
-## just the file
+## Just the file
 
-If you simply want for the plain file, wherein the words are separated by newlines `\n`, check the present file [wordsList.zip](wordsList.zip?raw=true). The corresponding unzipped file is encoded in `iso-8859-1`.
+If you simply want for the plain file, wherein the words are separated by newlines `\n`, check the present file [wordsList.zip](wordsList.zip?raw=true). The corresponding unzipped file is encoded in `ISO-8859-1`.
